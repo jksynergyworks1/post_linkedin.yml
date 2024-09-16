@@ -2,24 +2,25 @@ name: LinkedIn Post Automation
 
 on:
   schedule:
-    - cron: '0 9 * * *' # This runs every day at 09:00 UTC
+    - cron: '0 9 * * *'
 
 jobs:
   post_to_linkedin:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-      
+      uses: actions/checkout@v3  # Updated to v3 to use Node 16+
+
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4  # Updated to v4 to use Node 16+
+
       with:
         python-version: '3.x'
-        
+
     - name: Install dependencies
       run: |
-        pip install pandas requests openpyxl schedule
-        
+        pip install pandas requests openpyxl
+
     - name: Run LinkedIn post script
       run: python linkedin_post.py
