@@ -2,7 +2,8 @@ name: LinkedIn Post Automation
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs daily at 09:00 UTC
+    - cron: '0 9 * * *'  # Scheduled to run every day at 09:00 UTC
+  workflow_dispatch:  # Allows manual trigger through the GitHub UI
 
 jobs:
   post_to_linkedin:
@@ -10,11 +11,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4-beta  # Use pre-release version compatible with Node.js 20
+      uses: actions/checkout@v4-beta  # Using pre-release version for Node.js 20 compatibility
 
     - name: Set up Python
-      uses: actions/setup-python@v4.1.0-beta  # Use pre-release version compatible with Node.js 20
-
+      uses: actions/setup-python@v4.1.0-beta  # Pre-release version for Node.js 20 compatibility
       with:
         python-version: '3.x'
 
