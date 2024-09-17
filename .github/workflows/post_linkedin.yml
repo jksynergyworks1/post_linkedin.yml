@@ -2,7 +2,7 @@ name: LinkedIn Post Automation
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 9 * * *'  # Runs daily at 09:00 UTC
 
 jobs:
   post_to_linkedin:
@@ -10,10 +10,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3  # Updated to v3 to use Node 16+
+      uses: actions/checkout@v4-beta  # Use pre-release version compatible with Node.js 20
 
     - name: Set up Python
-      uses: actions/setup-python@v4  # Updated to v4 to use Node 16+
+      uses: actions/setup-python@v4.1.0-beta  # Use pre-release version compatible with Node.js 20
 
       with:
         python-version: '3.x'
